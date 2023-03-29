@@ -24,18 +24,22 @@ export default {
             this.store.listCards = res.data.data;
 
             this.store.loading = false;
+
+            this.store.contatore = res.data.data.length;
         })
     },
 
     methods: {
         search() {
 
-            let newApi = this.store.APICall + this.store.APIquery + this.store.searchInput;
+            let newApi = this.store.newAPICall + this.store.APIrange + this.store.rangeValue + this.store.APIstart + this.store.startValue + this.store.APIquery + this.store.searchInput;
 
             axios.get(newApi).then((res) => {
                 console.log(res.data.data);
 
                 this.store.listCards = res.data.data;
+
+                this.store.contatore = res.data.data.length;
             })
         },
     }

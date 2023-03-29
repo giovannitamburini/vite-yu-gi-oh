@@ -1,21 +1,21 @@
 <script>
-
 export default {
     data() {
         return {
-
         }
     },
 
+    // dichiaro le props per comunicare dal genitore al figlio
     props: {
+        // devo dichiarare il tipo di variabile, in questo caso è un oggetto;
         cardYu: Object,
     },
-
 }
 </script>
 
 <template>
     <div class="card-yugioh-container">
+        <!-- tutte le proprietà sono ottenute tramte la props 'cardYu'  -->
         <img :src="cardYu.card_images[0].image_url" alt="Yu-gi-oh card">
         <div class="description-card">
             <div>

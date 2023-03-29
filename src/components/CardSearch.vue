@@ -1,18 +1,15 @@
 <script>
 
+// importo lo store in cui sono inseriti i dati condivisi
 import { store } from "../store.js";
-
+// importo la componente in cui è inserito il contatore delle carte ottenute dalla ricerca
 import CardNumber from "./CardNumber.vue";
-
 
 export default {
     data() {
         return {
 
             store,
-
-            searchString: '',
-
         }
     },
 
@@ -29,11 +26,14 @@ export default {
         <div id="filter">
             <h2>Filtra carte:</h2>
 
+            <!-- tramite emit passo dei dati dall'elemento padre al figlio, in questo caso passo una funzione contenuta in AppMain -->
             <input v-model="store.searchInput" @keyup.enter="$emit('searchCard')" type="text"
                 placeholder="digita il nome di una carta">
 
             <div id="selected-range">
                 <label for="range-selected">Scegli un range di ricerca: </label>
+
+                <!-- faccio un v-model che passo all'elemento dello store.js che mi serve per creare la nuova API call, filtrata dai paramentri di ricerca -->
                 <select v-model="store.rangeValue" name="range" id="range-selected">
                     <option value="50">50</option>
                     <option value="100">100</option>
@@ -44,15 +44,20 @@ export default {
 
             <div id="selected-start">
                 <label for="start-selected">Scegli un indice di partenza: </label>
+
+                <!-- faccio un v-model che passo all'elemento store.js che mi serve per creare la nuova API call, filtrata dai parametri di ricerca -->
                 <select v-model="store.startValue" name="range" id="start-selected">
                     <option value="0">0</option>
                     <option value="500">500</option>
                     <option value="1000">1000</option>
                     <option value="1500">1500</option>
                     <option value="2000">2000</option>
+                    <option value="2500">2500</option>
+                    <option value="3000">3000</option>
                 </select>
             </div>
 
+            <!-- tramite emit passo dei dati dall'elemento padre al figlio, in questo caso passo una funzione contenuta in AppMain -->
             <button @click="$emit('searchCard')">Cerca</button>
 
             <CardNumber></CardNumber>

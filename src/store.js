@@ -22,4 +22,6 @@ export const store = reactive({
 
     contatore: Number,
 
+    errors: [],
+
 });

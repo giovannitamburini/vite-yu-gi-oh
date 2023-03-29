@@ -11,6 +11,7 @@ export default {
         return {
 
             store,
+
         }
     },
     components: {
@@ -35,12 +36,13 @@ export default {
             let newApi = this.store.newAPICall + this.store.APIrange + this.store.rangeValue + this.store.APIstart + this.store.startValue + this.store.APIquery + this.store.searchInput;
 
             axios.get(newApi).then((res) => {
+
                 console.log(res.data.data);
 
                 this.store.listCards = res.data.data;
 
                 this.store.contatore = res.data.data.length;
-            })
+            }).catch(e => alert("la ricerca non ha prodotto risultati"));
         },
     }
 

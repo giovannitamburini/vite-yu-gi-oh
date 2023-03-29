@@ -25,7 +25,10 @@ export default {
     display: flex;
     align-items: center;
     height: 180px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid black;
     background-color: #103188;
+    box-shadow: 0px 5px 10px black;
 
 
     img {

@@ -9,8 +9,6 @@ export default {
     data() {
         return {
 
-            // listCards: [],
-
             store,
         }
     },
@@ -22,6 +20,8 @@ export default {
         axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0').then((res) => {
 
             this.store.listCards = res.data.data;
+
+            this.store.loading = false;
         })
     },
 }
@@ -29,7 +29,7 @@ export default {
 
 <template>
     <div id="main">
-        <div v-if="this.store.listCards.length < 50" id="loading">
+        <div v-if="store.loading" id="loading">
             i'm working HARD for you
         </div>
 
@@ -48,6 +48,8 @@ export default {
         text-align: center;
         padding-top: 10px;
         font-size: 5em;
+        width: 100%;
+        height: 100%;
     }
 
     #cards-list {
